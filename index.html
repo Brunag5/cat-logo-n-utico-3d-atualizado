@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Linha Náutica - Mergulho Criativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --violeta-imersivo: #8b5cf6;
+            --azul-confianca: #2563EB;
+            --amarelo-descoberta: #FACC15;
+            --branco-puro: #FFFFFF;
+            --grafite-neutro: #1F2937;
+            --lilas-suave: #F5F3FF;
+            --verde-whatsapp: #25D366;
+            --sombra-card: 0 10px 25px -5px rgba(107, 33, 168, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #faf5ff;
+            color: var(--grafite-neutro);
+            padding-bottom: 50px;
+        }
+
+        /* HEADER */
+        .header-banner {
+            background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+            color: var(--branco-puro);
+            text-align: center;
+            padding: 20px 20px 50px 20px;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 8px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: auto;
+            max-height: 100px;
+            object-fit: contain;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        .tagline {
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f3e8ff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .main-title {
+            font-size: 2.1em;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-bottom: 8px;
+            color: #f5f3ff;
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: #ede9fe;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* DIVISÓRIA EM ONDA */
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 40px;
+        }
+
+        .wave-divider .shape-fill {
+            fill: #faf5ff;
+        }
+
+        .wavy-line-detail {
+            width: 100%;
+            height: 16px;
+            margin: 15px 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,60 C900,30 650,140 500,60 C350,-20 150,110 0,20 Z' fill='%20%23c084fc' opacity='0.4'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-size: 250px 16px;
+        }
+
+        /* GRID DE PRODUTOS */
+        .catalog-container {
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--branco-puro);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--sombra-card);
+            border: 1px solid #f0e7ff;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px -5px rgba(107, 33, 168, 0.15);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 380px;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .img-container:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: var(--violeta-imersivo);
+            color: var(--branco-puro);
+            font-size: 0.75em;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .product-info {
+            padding: 22px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.2em;
+            color: var(--grafite-neutro);
+            font-weight: 700;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e9d8fd;
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        .price-table th {
+            background-color: var(--lilas-suave);
+            color: var(--violeta-imersivo);
+            padding: 9px 4px;
+            font-weight: 600;
+            border-bottom: 1px solid #e9d8fd;
+        }
+
+        .price-table td {
+            padding: 10px 4px;
+            color: #4b5563;
+            font-weight: 600;
+            border-right: 1px solid #f3e8ff;
+        }
+
+        .price-table td:last-child {
+            border-right: none;
+        }
+
+        .price-table td.highlight {
+            background-color: #f3e8ff;
+            color: var(--violeta-imersivo);
+            font-weight: 700;
+        }
+
+        /* CARD DE PRODUTOS PERSONALIZADOS */
+        .custom-notice-card {
+            max-width: 800px;
+            margin: 40px auto 20px auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+            border: 2px dashed #c084fc;
+            border-radius: 20px;
+            padding: 25px 30px;
+            text-align: center;
+            box-shadow: var(--sombra-card);
+        }
+
+        .custom-notice-card h3 {
+            color: var(--violeta-imersivo);
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .custom-notice-card p {
+            color: #4b5563;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* SEÇÃO E BOTÃO DO WHATSAPP */
+        .cta-section {
+            text-align: center;
+            margin: 20px auto 20px auto;
+            padding: 0 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--verde-whatsapp);
+            color: var(--branco-puro);
+            font-weight: 700;
+            font-size: 1.1em;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-banner">
+        <div class="logo-container">
+            <img src="logo.png" alt="Mergulho Criativo Logo" class="logo-img">
+        </div>
+        <div class="tagline">Pensou? A gente cria</div>
+        <h1 class="main-title">Catálogo - Linha Náutica</h1>
+        <h2 class="subtitle">Mergulho Criativo</h2>
+        <p class="description">Soluções inovadoras em Impressão 3D para o seu barco e estilo náutico</p>
+
+        <div class="wave-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.6,200,115.8,241,112.3,281.8,92.83,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <main class="catalog-container">
+
+        <!-- 1. Chaveiro Âncora -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Acessório</span>
+                <img src="chaveiro-âncora.jpeg" alt="Chaveiro Âncora" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Chaveiro Âncora</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 15,00</td><td>R$ 12,00</td><td>R$ 10,00</td><td class="highlight">R$ 8,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. Chaveiro Âncora 2 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Acessório</span>
+                <img src="chaveiro-âncora2.jpeg" alt="Chaveiro Âncora Branco" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Chaveiro Âncora Branco</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 15,00</td><td>R$ 12,00</td><td>R$ 10,00</td><td class="highlight">R$ 8,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. Chaveiro Barco -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Acessório</span>
+                <img src="chaveiro-barco.jpg" alt="Chaveiro Barco" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Chaveiro Barco</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 15,00</td><td>R$ 12,00</td><td>R$ 10,00</td><td class="highlight">R$ 8,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 4. Miniatura Barco -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-barco.jpeg" alt="Veleiro Miniatura" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Veleiro Miniatura – 186 g</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 40,00</td><td>R$ 35,00</td><td>R$ 33,00</td><td class="highlight">R$ 30,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. Miniatura Barco 2 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-barco2.jpeg" alt="Veleiro Clássico Miniatura" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Veleiro Clássico Miniatura</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 40,00</td><td>R$ 35,00</td><td>R$ 33,00</td><td class="highlight">R$ 30,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 6. Miniatura Barco 3 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-barco3.jpeg" alt="Miniatura Náutica M3" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Miniatura Náutica M3</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 17,00</td><td>R$ 15,00</td><td>R$ 12,00</td><td class="highlight">R$ 10,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 7. Miniatura Barco 4 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-barco4.jpeg" alt="Miniatura Barco M4" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Miniatura Barco M4</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 20,00</td><td>R$ 18,00</td><td>R$ 16,00</td><td class="highlight">R$ 10,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 8. Miniatura Barco 5 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-barco5.jpeg" alt="Miniatura Barco M5" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Miniatura Barco M5</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 25,00</td><td>R$ 20,00</td><td>R$ 17,00</td><td class="highlight">R$ 16,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 9. Miniatura de Barco 4 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-de-barco4.jpeg" alt="Escuna Miniatura M4" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Escuna Miniatura M4</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 22,00</td><td>R$ 20,00</td><td>R$ 18,00</td><td class="highlight">R$ 15,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 10. Miniatura de Barco 5 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-de-barco5.jpeg" alt="Barco Apoio Miniatura M5" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Barco Apoio Miniatura M5</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 25,00</td><td>R$ 22,00</td><td>R$ 16,00</td><td class="highlight">R$ 14,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 11. Miniatura de Barco 6 -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Miniatura</span>
+                <img src="miniatura-de-barco6.jpeg" alt="Escuna Miniatura M6" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Escuna Miniatura M6</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 45,00</td><td>R$ 40,00</td><td>R$ 35,00</td><td class="highlight">R$ 32,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 12. Organizador Náutico -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Organização</span>
+                <img src="organizador.jpg" alt="Organizador Náutico" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Organizador Náutico</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 50,00</td><td>R$ 42,00</td><td>R$ 36,00</td><td class="highlight">R$ 30,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 13. Porta Celular Carregador -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Suporte</span>
+                <img src="porta-celular-carregador.jpg" alt="Suporte Celular Carregador" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Suporte Celular Carregador</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 45,00</td><td>R$ 38,00</td><td>R$ 32,00</td><td class="highlight">R$ 25,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 14. Porta Celular -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Suporte</span>
+                <img src="porta-ceular.jpeg" alt="Suporte Celular Barco" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Suporte Celular Barco</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 35,00</td><td>R$ 30,00</td><td>R$ 25,00</td><td class="highlight">R$ 20,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 15. Porta-Copos -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Acessório</span>
+                <img src="porta-copos.jpg" alt="Porta-Copos Náutico" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Porta-Copos Náutico</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 25,00</td><td>R$ 20,00</td><td>R$ 18,00</td><td class="highlight">R$ 15,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 16. Porta-Latas -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Acessório</span>
+                <img src="porta-latas.jpeg" alt="Porta-Latas Náutico" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Porta-Latas Náutico</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 30,00</td><td>R$ 25,00</td><td>R$ 22,00</td><td class="highlight">R$ 18,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 17. Porta-Óculos -->
+        <div class="product-card">
+            <div class="img-container">
+                <span class="badge">Suporte</span>
+                <img src="porta-óculos.jpg" alt="Suporte Porta-Óculos" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Suporte Porta-Óculos</h3>
+                <div class="wavy-line-detail"></div>
+                <table class="price-table">
+                    <thead><tr><th>1 UN</th><th>10 UN</th><th>20 UN</th><th>30 UN</th></tr></thead>
+                    <tbody><tr><td>R$ 30,00</td><td>R$ 25,00</td><td>R$ 22,00</td><td class="highlight">R$ 18,00</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- AVISO DE PRODUTOS PERSONALIZADOS -->
+    <div class="custom-notice-card">
+        <h3>✨ Projetos Personalizados</h3>
+        <p>Desenvolvemos outros modelos exclusivos sob medida, inclusive a <strong>miniatura do seu próprio barco</strong>! Entre em contato conosco para orçar seu projeto único.</p>
+    </div>
+
+    <!-- BOTÃO DE WHATSAPP -->
+    <div class="cta-section">
+        <a href="https://goo.su/wXcxJn" target="_blank" class="whatsapp-btn">
+            Falar no WhatsApp
+        </a>
+    </div>
+
+</body>
+</html>
